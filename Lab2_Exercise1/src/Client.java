@@ -4,6 +4,8 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
 
+//test change
+
 public class Client {
 	private PrintWriter socketOut;
 	private Socket palinSocket;
