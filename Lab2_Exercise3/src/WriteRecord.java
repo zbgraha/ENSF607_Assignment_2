@@ -4,6 +4,7 @@
  * Completed by: STUDENT(S) NAME
  */
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -47,7 +48,13 @@ public class WriteRecord {
 	 */
 	public void openFileInputStream(String textFileName) {
         
-     // TO BE COMPLETED BY THE STUDENTS
+     // TODO TO BE COMPLETED BY THE STUDENTS
+		try {
+			textFileIn = new Scanner(new File(textFileName));
+		} catch (FileNotFoundException e) {
+			System.err.println("ERROR: File not found");
+//			e.printStackTrace();
+		}
 	}
 
 	/**
@@ -56,8 +63,16 @@ public class WriteRecord {
 	 */
 	public void openObjectOutputStream(String objectFileName) {
         
-    // TO BE COMPLETED BY THE STUDENTS
-        
+    // TODO TO BE COMPLETED BY THE STUDENTS
+        try {
+			objectOut = new ObjectOutputStream(new FileOutputStream(objectFileName));
+		} catch (FileNotFoundException e) {
+			System.err.println("ERROR: File not found");
+//			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	/**
@@ -84,10 +99,24 @@ public class WriteRecord {
 			setRecord(year, songName, singerName, price);
 			textFileIn.nextLine();   // read the dashed lines and do nothing
             
-            // THE REST OF THE CODE TO BE COMPLETED BY THE STUDENTS
+            // TODO THE REST OF THE CODE TO BE COMPLETED BY THE STUDENTS
+			try {
+				objectOut.writeObject(record);
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+//			System.out.println(record);
+		}
+		try {
+			objectOut.close();
+			textFileIn.close();
+		}catch(IOException e) {
+			System.err.println("ERROR: file not closed sucessfully");
 		}
 
-		// YOUR CODE GOES HERE
+
+
 	}
 
 	public static void main(String[] args) throws IOException {

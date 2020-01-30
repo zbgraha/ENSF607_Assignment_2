@@ -15,8 +15,7 @@ public class ReadRecord {
     
     /**
      *  opens an ObjectInputStream using a FileInputStream
-     */
-    
+     */    
     private void readObjectsFromFile(String name)
     {
         MusicRecord record ;
@@ -40,15 +39,21 @@ public class ReadRecord {
         {
             while ( true )
             {
-                
-                
+                record = (MusicRecord) input.readObject();
+                System.out.println(record);
+//                System.out.println((MusicRecord) input.readObject());
                 // TO BE COMPLETED BY THE STUDENTS
                 
            
             }   // END OF WHILE
+        }catch(EOFException e) {
+        	System.out.println("End of file");
         }
-                // ADD NECESSARY catch CLAUSES HERE
-
+        catch(ClassNotFoundException | IOException e)
+        {
+        	                // ADD NECESSARY catch CLAUSES HERE
+        }
+//
     }           // END OF METHOD 
     
     
