@@ -55,34 +55,28 @@ public class Server {
 		}
 		return "is not a Palindrome.";
 	}
-	
 
-	
 	public void run() {
 		String line = null;
 		boolean running = true;
+		
 		while(running) {
 			try {
 				line = socketIn.readLine();
-				if(line.equals("QUIT")) {
-					line = "Good Bye";
+				if(line == null) {
+//					line = "Good Bye";
 //					socketOut.println(line);
-					running = false;
-					
+					running = false;	
 				}
 				else {
 					line = line.toLowerCase() + " " + boolToString(isPalindrome(line));
+					socketOut.println(line);
 				}
-				
-				
-				socketOut.println(line);
 				
 			}catch(IOException e) {
 				e.printStackTrace();
 			}
 		}
-		
-		
 	}
 	
 	public static void main(String[] args)throws IOException{

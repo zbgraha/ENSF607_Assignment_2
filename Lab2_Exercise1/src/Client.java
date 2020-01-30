@@ -35,18 +35,15 @@ public class Client {
 				line = stdIn.readLine();
 				if (!line.equals("QUIT")){
 					System.out.println(line);
-//					socketOut.println(line);
-//					response = socketIn.readLine();
-//					System.out.println(response);	
+					socketOut.println(line);
+					response = socketIn.readLine();
+					System.out.println(response);	
 				}else{
 
 					
 					running = false;
 				}
-				// modified to prevent a null pointer error when QUIT is entered
-				socketOut.println(line);
-				response = socketIn.readLine();
-				System.out.println(response);	
+
 				
 			} catch (IOException e) {
 				System.out.println("Sending error: " + e.getMessage());
