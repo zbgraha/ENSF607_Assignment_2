@@ -41,8 +41,9 @@ public class Client {
 				line = line.toUpperCase();
 				socketOut.println(line);
 				response = socketIn.readLine(); //read response from the socket
-				System.out.println(response);
-				
+				if (response != null) {
+					System.out.println(response);
+				}
 				
 			}catch (IOException e) {
 				e.getStackTrace();
