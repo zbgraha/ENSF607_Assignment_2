@@ -21,6 +21,13 @@ class MusicRecord implements Serializable
 		public MusicRecord() {
 			this( 0, "", "", 0.0 ); 
 		} 
+		
+		public MusicRecord(MusicRecord old) {
+			setYear( old.getYear());
+			setSongName( old.getSongName());
+			setSingerName( old.getSingerName());
+			setPrice( old.getPurchasePrice() );
+		}
 	  
         /**
          * A constructor that initializes the music records with supplied 

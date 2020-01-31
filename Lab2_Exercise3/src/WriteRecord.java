@@ -101,7 +101,7 @@ public class WriteRecord {
             
             // TODO THE REST OF THE CODE TO BE COMPLETED BY THE STUDENTS
 			try {
-				objectOut.writeObject(record);
+				objectOut.writeObject(new MusicRecord(record));
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

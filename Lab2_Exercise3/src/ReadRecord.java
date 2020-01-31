@@ -53,6 +53,12 @@ public class ReadRecord {
         {
         	                // ADD NECESSARY catch CLAUSES HERE
         }
+        try {
+        	input.close();
+        	
+        }catch(IOException e) {
+        	e.printStackTrace();
+        }
 //
     }           // END OF METHOD 
     
