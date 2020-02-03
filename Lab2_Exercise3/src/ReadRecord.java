@@ -9,6 +9,11 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 
+/**A class that opens a file as an object input stream
+ * and prints the contents inside to the console window
+ * @author Riley Berry and Zachary Graham
+ *
+ */
 public class ReadRecord {
     
     private ObjectInputStream input;

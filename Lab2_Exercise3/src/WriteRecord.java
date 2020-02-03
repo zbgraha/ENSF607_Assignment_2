@@ -13,6 +13,12 @@ import java.io.ObjectOutputStream;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
 
+/**A class that contains an object that opens a file that contains MusicRecord data
+ * in a particular format. Reads MusicRecord objects from this file and saves them
+ * in a serialized format to a new file.
+ * @author Riley Berry and Zachary Graham
+ *
+ */
 public class WriteRecord {
 
 	ObjectOutputStream objectOut = null;

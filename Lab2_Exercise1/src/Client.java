@@ -4,14 +4,20 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
 
-//test change
-
+/**The client for the server application that determines if a word is a palindrome
+ * @author Riley Berry and Zachary Graham
+ *
+ */
 public class Client {
 	private PrintWriter socketOut;
 	private Socket palinSocket;
 	private BufferedReader stdIn;
 	private BufferedReader socketIn;
 
+	/**Constructor for the client
+	 * @param serverName
+	 * @param portNumber
+	 */
 	public Client(String serverName, int portNumber) {
 		try {
 			palinSocket = new Socket(serverName, portNumber);
@@ -24,6 +30,10 @@ public class Client {
 		}
 	}
 
+	/**Prompts the user to enter words and prints them into the socket for
+	 * the server to review
+	 * 
+	 */
 	public void communicate()  {
 
 		String line = "";

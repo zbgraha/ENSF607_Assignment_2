@@ -1,14 +1,13 @@
 import java.io.Serializable;
 
-/**
- *   A simple class that represents a music record
+
+/**A simple class that represents a music record. Contains the year
+ * of recording, song same, singer name, and purchase price
+ * @author Riley Berry and Zachary Graham
  *
  */
 class MusicRecord implements Serializable
 	{
-		/**
-	 * 
-	 */
 		private static final long serialVersionUID = 1L;
 		private int year_recorded;
 		private String songName;
