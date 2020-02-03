@@ -12,6 +12,12 @@ public class Client {
 	private BufferedReader socketIn;
 	private BufferedReader stdIn;
 	
+	
+	/**
+	 * Creates a Client that connects to the specified server and port
+	 * @param serverName The server to connect on
+	 * @param portNumber The port to connect with
+	 */
 	public Client (String serverName, int portNumber) {
 		
 		try {
@@ -29,6 +35,10 @@ public class Client {
 			e.printStackTrace();
 		}
 	}
+	
+	/**
+	 * Takes a DATA or TIME string from a user and returns the current date or time from the server. QUIT to exit
+	 */
 	public void communicate () {
 		String line = "abc";
 		String response = "";
@@ -59,6 +69,12 @@ public class Client {
 		}
 		
 	}
+	/**
+	 * Start the client and connect to a server. Server must be running first
+	 * 
+	 * @param args
+	 * @throws IOException
+	 */
 	public static void main (String [] args) throws IOException{
 		Client aClient = new Client ("localhost", 9090);
 		aClient.communicate();
