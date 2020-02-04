@@ -71,6 +71,6 @@ public class ReadRecord {
     public static void main(String [] args)
     {
         ReadRecord d = new ReadRecord();
-        d.readObjectsFromFile("mySongs.ser");
+        d.readObjectsFromFile("allSongs.ser");
     }
 }
