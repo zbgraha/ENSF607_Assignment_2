@@ -31,6 +31,10 @@ public class GameInformation implements Serializable{
 		// TODO Auto-generated constructor stub
 	}
 
+	public GameInformation(int i) {
+		setDisplayInstruction(i);
+	}
+
 	public int getDisplayInstruction() {
 		return displayInstruction;
 	}

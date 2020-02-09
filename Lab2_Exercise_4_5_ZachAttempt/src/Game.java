@@ -50,6 +50,10 @@ public class Game implements Runnable{
 		while (true) {
 			try {
 				gameInfo = (GameInformation) socketInPlayerX.readObject();
+				if (gameInfo.getDisplayInstruction()==10) {
+					socketOutPlayerO.writeObject(gameInfo);
+					break;
+				}
 				updateBoard();
 				if (gameOver()) {
 					socketOutPlayerO.writeObject(gameInfo);
@@ -66,6 +70,10 @@ public class Game implements Runnable{
 			}
 			try {
 				gameInfo = (GameInformation) socketInPlayerO.readObject();
+				if (gameInfo.getDisplayInstruction()==10) {
+					socketOutPlayerX.writeObject(gameInfo);
+					break;
+				}
 				updateBoard();
 				if (gameOver()) {
 					break;

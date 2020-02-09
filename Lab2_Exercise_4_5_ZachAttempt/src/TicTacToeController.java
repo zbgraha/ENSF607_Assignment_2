@@ -28,6 +28,20 @@ public class TicTacToeController {
 		setActionListeners();
 	}
 	
+	public void addCloseWindowListener() {
+		game.addWindowListener(new java.awt.event.WindowAdapter() {
+		    @Override
+		    public void windowClosing(java.awt.event.WindowEvent windowEvent) {
+		        try {
+					client.getSocketOut().writeObject(new GameInformation(10));
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+		    }
+		});
+	}
+	
 	/**Updates the board in the back end to match the text displayed in the UI
 	 * 
 	 */
@@ -128,6 +142,9 @@ public class TicTacToeController {
 		else if (newGame.getDisplayInstruction() == 1 || newGame.getDisplayInstruction() == 2) {
 			play(newGame);
 		}	
+		else if (newGame.getDisplayInstruction()==10) {
+			game.disconnect();
+		}
 		else {
 			endGameMessage(newGame);
 		}

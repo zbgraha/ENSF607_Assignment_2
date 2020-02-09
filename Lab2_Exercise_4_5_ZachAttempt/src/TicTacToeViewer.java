@@ -230,4 +230,14 @@ public class TicTacToeViewer extends JFrame{
 		else
 			return true;
 	}
+	
+	public boolean disconnect() {
+		int result = JOptionPane.showConfirmDialog(this, 
+				   "Your Opponent has Disconnected...",null, JOptionPane.DEFAULT_OPTION);
+		if(result == JOptionPane.DEFAULT_OPTION) {
+		    return true;
+		} 
+		else
+			return true;
+	}
 }
