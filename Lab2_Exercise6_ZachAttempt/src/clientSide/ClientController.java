@@ -54,6 +54,12 @@ public class ClientController {
 				}
 		    }
 		});
+		wait.addWindowListener(new java.awt.event.WindowAdapter() {
+		    @Override
+		    public void windowClosing(java.awt.event.WindowEvent windowEvent) {
+		    	wait.setVisible(false);
+		    }
+		});
 	}
 	
 	/**A listener that implements functionality for when a user makes a selection from the client
