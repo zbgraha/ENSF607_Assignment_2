@@ -8,6 +8,12 @@ import java.net.Socket;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+/**Class with a server socket for tic tac toe. Accepts connection from 2 users
+ * and then executes a thread of type GameController which handles the interactions
+ * between the players.
+ * @author Riley Berry and Zachary Graham
+ *
+ */
 public class TicTacToeServer {
 	
 	private ServerSocket serverSocket;
@@ -15,6 +21,10 @@ public class TicTacToeServer {
 	private ExecutorService threadPool;
 	
 	
+	/**Constructor for the server. Intantiates the serverSocket and creates
+	 * a thread pool of size 2 so that two games can be played concurrently.
+	 * @param portNum
+	 */
 	public TicTacToeServer(int portNum) {
 		try {
 			serverSocket = new ServerSocket(portNum);
@@ -25,6 +35,10 @@ public class TicTacToeServer {
 		}
 	}
 	
+	/**Waits for two players to connect, establishes an input and output stream with each one, 
+	 * then creates and executes a new GameController object using one of the server's threads
+	 * 
+	 */
 	public void runServer() {
 		
 		try {
@@ -53,6 +67,9 @@ public class TicTacToeServer {
 
 	
 	
+	/**Main function for starting the server.
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		
 		TicTacToeServer testServer = new TicTacToeServer(9899);

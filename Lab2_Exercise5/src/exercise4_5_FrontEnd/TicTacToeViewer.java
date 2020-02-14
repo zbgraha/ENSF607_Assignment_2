@@ -26,6 +26,10 @@ import javax.swing.JTextField;
 import java.awt.BorderLayout;
 import javax.swing.JTextArea;
 
+/**The Client User interface for the tic tac toe game
+ * @author Riley Berry and Zachary Graham
+ *
+ */
 public class TicTacToeViewer implements Constants {
 
 	private JFrame frmRileysTictactoeGame;
@@ -63,16 +67,21 @@ public class TicTacToeViewer implements Constants {
 	/**
 	 * Create the application.
 	 */
+
 	public TicTacToeViewer() {
 		ticButtonList= new TicButton [9];
 		initialize();
 		frmRileysTictactoeGame.setVisible(true);
 	}
 	
+
 	public int getTicButtonListLength() {
 		return ticButtonList.length;
 	}
 
+	/**Prints message indicating that the UI window is active
+	 * 
+	 */
 	public void isActive() {
 		System.out.println(frmRileysTictactoeGame.isEnabled());
 //		frmRileysTictactoeGame.updateWindow();
@@ -85,6 +94,10 @@ public class TicTacToeViewer implements Constants {
 	////////////////////
 	//////// Getters and Setters
 
+	/**Displays an input dialogue box that a user can enter information
+	 * @param question that shows up in the dialogue box for the user
+	 * @return the user input as a string
+	 */
 	public String getPopupMessage(String question) {
 		
 		String ans = JOptionPane.showInputDialog(frmRileysTictactoeGame,question,null, JOptionPane.PLAIN_MESSAGE);
@@ -92,6 +105,10 @@ public class TicTacToeViewer implements Constants {
 		return ans;
 	}
 	
+	/**Displays a Yes/No dialogue box over the UI.
+	 * @param message that is displayed in the dialogue box
+	 * @return true if the user clicks yes, false if the user clicks no
+	 */
 	public boolean getYesNoDialogBox(String message) {
 		int ans =  JOptionPane.showConfirmDialog(null,message);
 		
@@ -105,14 +122,17 @@ public class TicTacToeViewer implements Constants {
 		
 	}
 	
+
 	public String getServer() {
 		return server.getText();
 	}
 	
+
 	public void setServer(String newServer) {
 		server.setText(newServer);
 	}
 	
+
 	public int getPort() {
 		try {
 			int newPort = Integer.parseInt(port.getText());
@@ -152,6 +172,9 @@ public class TicTacToeViewer implements Constants {
 	}
 	
 	
+	/**Appends a string to the existing contents of the message box
+	 * @param newMsg is the string to be added to the message box
+	 */
 	public void addMessage(String newMsg) {
 		String msg = messageBox.getText();
 		msg += "\n"+newMsg;
@@ -162,10 +185,17 @@ public class TicTacToeViewer implements Constants {
 	//////////////////////////////////////////////
 	//////////////// Object Methods
 	
+	/**Set the contents of the message box to an empty string
+	 * 
+	 */
 	public void clearMessage() {
 		messageBox.setText("");
 	}
 	
+	/**Takes a 3x3 char array and iterates through the contents of the buttons in the UI window
+	 * updates the contents of the 3x3 array to match the contents of the UI window
+	 * @param board - the 3x3 char array representation of the tic tac toe board
+	 */
 	public void updateBoard(char[][] board) {
 		if (ticButtonList !=null) {
 			for(TicButton button: ticButtonList) {
@@ -174,6 +204,9 @@ public class TicTacToeViewer implements Constants {
 		}	
 	}
 	
+	/**Updates the text of all the UI board buttons to an empty space
+	 * 
+	 */
 	public void clearBoard() {
 		if (ticButtonList !=null) {
 			for(TicButton button: ticButtonList) {

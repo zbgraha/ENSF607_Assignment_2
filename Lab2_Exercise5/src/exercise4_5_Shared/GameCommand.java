@@ -2,11 +2,13 @@ package exercise4_5_Shared;
 
 import java.io.Serializable;
 
+/**A class containing a serializable object containing information passed between a client and server of
+ * a tic tac toe game.
+ * @author Riley Berry and Zachary Graham
+ *
+ */
 public class GameCommand implements Serializable, Constants{
 	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 6601503566574509546L;
 	private char currentPlayer;
 	private String xPlayer;
@@ -26,21 +28,37 @@ public class GameCommand implements Serializable, Constants{
 	// 98 not Connected
 	// 99 response not received
 
+	/**Creates an 'empty' tic tac toe board and sets the command to zero which
+	 * prompts users to provide their name
+	 * 
+	 */
 	public GameCommand() {
 		initializeBoard();
 		setCommand(0);
 	}
 	
+	/**Adds a char character matching that of the current players to
+	 * the row and column matching the input arguments
+	 * @param row of the tic tac toe board that the mark will be placed
+	 * @param col of the tic tac toe board that the mark will be placed
+	 */
 	public void addMark(int row, int col) {
 		board[row][col] = currentPlayer;
 	}
 	
+	/**Re-instantiates an empty tic tac toe board
+	 * 
+	 */
 	public void clearBoard() {
 		initializeBoard();
 	}
 	
 	////////////////////////////
 	////// Helper Methods
+	/**Creates a 3x3 char array and places a space in each spot.
+	 * A space represents an empty place in this model of a tic tac toe board.
+	 * 
+	 */
 	private void initializeBoard() {
 		for (int i = 0; i<3; i++){
 			for(int j = 0; j<3; j++ ) {

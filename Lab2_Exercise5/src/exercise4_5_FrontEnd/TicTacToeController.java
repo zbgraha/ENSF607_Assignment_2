@@ -13,6 +13,10 @@ import javax.swing.JOptionPane;
 
 import exercise4_5_Shared.*;
 
+/**Controller for client side of the tic tac toe application
+ * @author Riley Berry and Zachary Graham
+ *
+ */
 public class TicTacToeController implements Constants{
 
 	private TicTacToeViewer myView;
@@ -30,6 +34,10 @@ public class TicTacToeController implements Constants{
 	private ExecutorService threadPool;
 	
 	
+	/**Constructor for the Controller. Creates the client and provides itself as the
+	 * input argument for the client. Also sets the board listeners.
+	 * @param theView
+	 */
 	public TicTacToeController(TicTacToeViewer theView ) {
 		myView = theView;
 		
@@ -41,6 +49,9 @@ public class TicTacToeController implements Constants{
 		
 	}
 	
+	/**Constructor for the Controller. Creates the client and provides itself as the
+	 * input argument for the client. Also sets the board listeners.
+	 */
 	public TicTacToeController( ) {
 		myView = new TicTacToeViewer();
 		myClient = new TicTacToeClient(this);
@@ -53,6 +64,9 @@ public class TicTacToeController implements Constants{
 	
 	
 
+	/**Updates the UI display board with the contents of the gameCommand object board
+	 * 
+	 */
 	public void updateBoard() {
 		myView.updateBoard(myCommand.getBoard());
 	}
@@ -69,6 +83,10 @@ public class TicTacToeController implements Constants{
 	//////////////////////////////////////////
 	//////////// Helper methods
 	
+	/**Attempts to user the port and server address on the UI to connect to the server.
+	 * If the connection is successful, the client is run
+	 * 
+	 */
 	private void connectToServer() {
 		if(myClient.isConnected() == false) {
 			
@@ -98,6 +116,9 @@ public class TicTacToeController implements Constants{
 
 	}
 	
+	/**Executes the client runnable which begins trying to read the socket input
+	 * 
+	 */
 	private void runClient() {
 		if (myClient.isConnected()) {
 			isConnected = true; // copies to local variable
@@ -106,16 +127,28 @@ public class TicTacToeController implements Constants{
 		}
 	}
 	
+	/**Attempts to connect to the default server address
+	 * @return true if connection successful
+	 */
 	private boolean connectToDefault() {
 		return myClient.connect(defaultPort, defaultHost);
 	}
 	
+	/**Attempts to connect to the user provided server host and port
+	 * @param host UI entry for host
+	 * @param port UI entry for port
+	 * @return true if the connection is successful
+	 */
 	private boolean connectToUserServer(String host, int port) {
 		return myClient.connect(port, host);
 		
 	}
 	
 	
+	/**Interprets the command integer value of the gameCommand object received by the inputstream and 
+	 * executes the appropriate behavior and instruction to the user.
+	 * 
+	 */
 	public void executeCommand() {
 		updateBoard();
 //		System.out.println("MyMark: "+myMark +", Current Mark: " + myCommand.getCurrentPlayer() 
@@ -201,6 +234,9 @@ public class TicTacToeController implements Constants{
 
 	}
 	
+	/**Writes the myCommand object to the outputstream
+	 * 
+	 */
 	private void messageServer() {
 		try {
 			myClient.getOutStream().writeObject(myCommand);
@@ -210,6 +246,10 @@ public class TicTacToeController implements Constants{
 		}
 	}
 	
+	/**Takes the value of the opponents name from the object received
+	 * by the input stream and updates the UI with the information
+	 * 
+	 */
 	private void setOpponentName() {
 		myView.addMessage("Test message 2");
 		if (myMark == LETTER_X) 
@@ -221,6 +261,10 @@ public class TicTacToeController implements Constants{
 		myView.addMessage("Test message 3");
 	}
 	
+	/**Displays to the user that the opponent has requested the the game be restart.
+	 * sets the appropriate command instruction to the object being sent to the outputstream
+	 * 
+	 */
 	private void restartRequested() {
 		boolean restart = myView.getYesNoDialogBox("Opponent would like to restart the game. Do you want to restart?");
 		if (restart)
@@ -229,6 +273,10 @@ public class TicTacToeController implements Constants{
 			myCommand.setCommand(8);
 	}
 	
+	/**Displays a variable message that the X player has won
+	 * depending on if the current player is the X player or not
+	 * 
+	 */
 	private void xPlayerWinsMessage() {
 		if(myMark == LETTER_X) {
 			myView.addMessage("Congratulations! You are the winner!");
@@ -242,6 +290,9 @@ public class TicTacToeController implements Constants{
 		
 	}
 	
+	/**Displays a variable message that the O player has won
+	 * depending on if the current player is the O player or not
+	 */
 	private void oPlayerWinsMessage() {
 		if(myMark == LETTER_O) {
 			myView.addMessage("Congratulations! You are the winner!");
@@ -255,6 +306,10 @@ public class TicTacToeController implements Constants{
 		
 	}
 	
+	/**Prompts the user to enter their name and writes the input to the
+	 * object being sent to the object output stream.
+	 * 
+	 */
 	private void getPlayerName() {
 		
 
@@ -282,6 +337,9 @@ public class TicTacToeController implements Constants{
 	}
 	
 
+	/**Connects the action listeners to their UI buttons
+	 * 
+	 */
 	private void setListeners() {
 		
 		myView.addConnectButtonListener((ActionEvent e) -> {connectToServer();});
@@ -294,6 +352,11 @@ public class TicTacToeController implements Constants{
 	//////////////// Action listener classes
 	
 	
+	/**Sets the command value to 6 and writes the myCommand to the object outputstream
+	 * which will display a message to the opponent that the user wants to restart
+	 * @author Riley Berry and Zachary Graham
+	 *
+	 */
 	public class RestartButtonListener implements ActionListener{
 
 		@Override
@@ -309,6 +372,12 @@ public class TicTacToeController implements Constants{
 		}
 	}
 	
+	/**If it is the current players turn, updates the text of the UI to match
+	 * their mark, updates the myCommand object board to match the UI, and writes
+	 * the object to the socket
+	 * @author Riley Berry and Zachary Graham
+	 *
+	 */
 	public class TicButtonListener implements ActionListener{
 		@Override
 		public void actionPerformed(ActionEvent e) {
