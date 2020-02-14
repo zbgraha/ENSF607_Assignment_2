@@ -252,4 +252,8 @@ public class TicTacToeController {
 		game.connected();
 		
 	}
+	
+	public void playerDisconnect() {
+		game.disconnect();
+	}
 }
