@@ -3,7 +3,9 @@ package clientSide;
 
 
 /**Class with a main function to test the functionality of the tic tac toe game.
- * @author Zachary Graham
+ * @author Riley Berry and Zachary Graham
+ * @version 1.0
+ * @since 2020-02-13
  *
  */
 public class TestClientManagementApp {

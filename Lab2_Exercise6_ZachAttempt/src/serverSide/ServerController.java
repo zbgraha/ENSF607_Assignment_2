@@ -6,17 +6,45 @@ import java.net.Socket;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.net.ServerSocket;
-
+/**
+ * An object to manage the server that a client can connect to in order to interact with the customer database
+ * @author Riley Berry and Zachary Graham
+ * @version 1.0
+ * @since 2020-02-13
+ *
+ */
 public class ServerController {
 
+	/**
+	 * socket that connects to the server
+	 */
 	private Socket aSocket;
+	/**
+	 * server socket used to accept incoming connections
+	 */
 	private ServerSocket serverSocket;
+	/**
+	 * object output stream for the connected socket
+	 */
 	private ObjectOutputStream socketOut;
+	/**
+	 * object input stream for the connected socket
+	 */
 	private ObjectInputStream socketIn;
+	/**
+	 * The database manager that is used to create and manage the customer database
+	 */
 	private ClientDataBaseManager database;
 	
+	/**
+	 * thread pool to manage mutilple client connections
+	 */
 	private ExecutorService pool;
 
+	/**
+	 * Constructor for the server class. Uses port 9898 with up to three connections at a time
+	 * @param database the database that the server is managing
+	 */
 	public ServerController(ClientDataBaseManager database) {
 		try {
 			this.database = database;
@@ -28,6 +56,9 @@ public class ServerController {
 		}
 	}
 
+	/**
+	 * method to start the  server and begin accepting connections
+	 */
 	public void runServer () {
 		try {
 			while (true) {

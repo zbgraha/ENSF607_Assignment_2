@@ -11,7 +11,9 @@ import javax.swing.event.ListSelectionListener;
 import customerAndActions.Customer;
 
 /**Class that contains all of the main UI elements for the client management system
- * @author Zachary Graham
+ * @author Riley Berry and Zachary Graham
+ * @version 1.0
+ * @since 2020-02-13
  *
  */
 public class ClientManagementScreen extends JFrame{

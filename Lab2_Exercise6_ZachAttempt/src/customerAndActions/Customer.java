@@ -3,29 +3,53 @@ package customerAndActions;
 import java.io.Serializable;
 
 /**A class that contains a constructor for an object that contains client information.
- * @author zacha
+ * @author Riley Berry and Zachary Graham
+ * @version 1.0
+ * @since 2020-02-13
  *
  */
 public class Customer implements Serializable{
 
-	private int id;
-	private String firstName;
-	private String lastName;
-	private String address;
-	private String postCode;
-	private String phone;
-	private String type;
 
 	
-	/**Client object used by the backend to sort client data
-	 * @param firstName
-	 * @param lastName
-	 * @param address
-	 * @param postCode
-	 * @param phone
-	 * @param type
+	/**
+	 * ID used as the primary key for the customer
 	 */
+	private int id;
+	/**
+	 * Customer's first name
+	 */
+	private String firstName;
+	/**
+	 * Customer's last name
+	 */
+	private String lastName;
+	/**
+	 * Address of customer
+	 */
+	private String address;
+	/**
+	 * Postal code of customer
+	 */
+	private String postCode;
+	/**
+	 * Customer primary phone number
+	 */
+	private String phone;
+	/**
+	 * Type of customer 
+	 * C for Commercial, R for Residential
+	 */
+	private String type;
+	/**
+	 * serial version ID for the customer object class
+	 */
+	private static final long serialVersionUID = -8074658753714705509L;
+
 	
+/**
+ * Default constructor for client, sets all values to null
+ */
 	public Customer() {
 		id = 0;
 		firstName = null;
@@ -35,6 +59,14 @@ public class Customer implements Serializable{
 		phone = null;
 		type = null;
 	}
+	/**Client object used by the back end to sort client data
+	 * @param firstName The first name of the client
+	 * @param lastName The last name of the client
+	 * @param address The address of the client
+	 * @param postCode The postal code of the client
+	 * @param phone The phone number of the client
+	 * @param type The type of client
+	 */
 	public Customer(String firstName, String lastName, String address, String postCode, String phone, String type)
 	{
 		this.firstName = firstName;
@@ -44,7 +76,16 @@ public class Customer implements Serializable{
 		this.phone = phone;
 		this.type = type;
 	}
-	
+	/**
+	 * Client object used by the back end to sort client data
+	 * @param id customer identification number
+	 * @param firstName The first name of the client
+	 * @param lastName The last name of the client
+	 * @param address The address of the client
+	 * @param postCode The postal code of the client
+	 * @param phone The phone number of the client
+	 * @param type The type of client
+	 */
 	public Customer(int id, String firstName, String lastName, String address, String postCode, String phone, String type)
 	{
 		this.id = id;

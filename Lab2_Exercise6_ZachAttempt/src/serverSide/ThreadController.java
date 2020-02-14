@@ -5,19 +5,44 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
 import customerAndActions.CustomerAndAction;
+/**
+ * An object to manage each connection from a client with a new thread
+ * @author Riley Berry and Zachary Graham
+ * @version 1.0
+ * @since 2020-02-13
+ *
+ */
 
 public class ThreadController implements Runnable{
 	
+	/**
+	 * Socket output stream to send Objects to the client instance
+	 */
 	private ObjectOutputStream socketOut;
+	/**
+	 * Socket intput stream to receive objects to the client
+	 */
 	private ObjectInputStream socketIn;
+	/**
+	 * The database manager used to interact with the database
+	 */
 	private ClientDataBaseManager database;;
 	
+	/**
+	 * Constuctor for the thread controller
+	 * @param socketIn Object input stream from the client socket connection
+	 * @param socketOut Object output stream from the client socket connection
+	 * @param database The database manager used to interact with the customer database
+	 */
 	public ThreadController (ObjectInputStream socketIn, ObjectOutputStream socketOut, ClientDataBaseManager database) {
 		this.socketIn = socketIn;
 		this.socketOut = socketOut;
 		this.database = database;
 	}
 
+	/**
+	 * Method implemented by the runnable interface to send and receive commands from the client
+	 */
 	@Override
 	public void run() {
 		while (true) {

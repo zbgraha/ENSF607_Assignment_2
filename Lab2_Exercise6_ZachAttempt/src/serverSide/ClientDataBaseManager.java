@@ -14,7 +14,10 @@ import customerAndActions.Customer;
 import customerAndActions.CustomerAndAction;
 
 /**Class with an object with functions to manage the SQL database of clients
- * @author Zachary Graham
+ * @author Riley Berry and Zachary Graham
+ * @version 1.0
+ * @since 2020-02-13
+ *
  */
 public class ClientDataBaseManager {
 
@@ -131,9 +134,11 @@ public class ClientDataBaseManager {
 		}
 	}
 
-
-	/**Add a client to the database table
-	 * @param customer
+	
+	/**
+	 * Adds a customer to the database with the supplied information
+	 * @param customer the object containing the new custoemr information
+	 * @return true if the customer was added
 	 */
 	public boolean addClient(Customer customer)
 	{
@@ -156,7 +161,11 @@ public class ClientDataBaseManager {
 			return false;
 		}
 	}
-	
+	/**
+	 * updates a customer in the database with the supplied information
+	 * @param customer customer object containing the new data
+	 * @return true if the customer was updated
+	 */
 	public boolean updateClient(Customer customer) {
 		String sql = "UPDATE " + tableName +
 				" SET FIRSTNAME=?, LASTNAME=?, ADDRESS=?, "
@@ -180,8 +189,13 @@ public class ClientDataBaseManager {
 			return false;
 		}
 	}
-
-
+	
+	
+/**
+ * Deletes the specified customer from the database
+ * @param customer the customer to be deleted
+ * @return true if the customer was deleted
+ */
 	public boolean deleteClient(Customer customer) {
 		String sql = "DELETE FROM " + tableName +
 				" WHERE ID=?;";
@@ -199,7 +213,11 @@ public class ClientDataBaseManager {
 		
 	}
 
-
+/**
+ * Searches for any customer based on the supplied criteria
+ * @param instruction the object containg the search crieria
+ * @return the ArrayList of customers matching the search criteria
+ */
 	public ArrayList<Customer> searchClient(CustomerAndAction instruction) {
 		String sql = "SELECT * FROM " + tableName + " WHERE " + instruction.getSearchType() + "=?";
 		ArrayList<Customer> results = new ArrayList<Customer>();
@@ -234,116 +252,7 @@ public class ClientDataBaseManager {
 		
 	}
 	
-	/**Add a client to the database table
-	 * @param firstName
-	 * @param lastName
-	 * @param address
-	 * @param postCode
-	 * @param phone
-	 * @param type
-	 */
-//	public void addClient(String firstName, String lastName, String address, String postCode, String phone, String type)
-//	{
-//		String sql = "INSERT INTO " + tableName +
-//				" VALUES ( NULL, ?, ?, ?, ?, ?, ? );";
-//		try{
-//			statement = jdbc_connection.prepareStatement(sql);
-//			statement.setString(1, firstName);
-//			statement.setString(2, lastName);
-//			statement.setString(3, address);
-//			statement.setString(4, postCode);
-//			statement.setString(5, phone);
-//			statement.setString(6, type);
-//			statement.executeUpdate();
-//		}
-//		catch(SQLException e)
-//		{
-//			e.printStackTrace();
-//		}
-//	}
-		
-	/**Delete a client in the database that matches the id argument
-	 * @param id
-	 */
-//	public void deleteClient(int id)
-//	{
-//		String sql = "DELETE FROM " + tableName +
-//				" WHERE ID=?;";
-//		try{
-//			statement = jdbc_connection.prepareStatement(sql);
-//			statement.setInt(1, id);
-//			statement.executeUpdate();
-//		}
-//		catch(SQLException e)
-//		{
-//			e.printStackTrace();
-//		}
-//	}
 
-
-	/**This method should search the database table for a client matching the search parameter and return that client information.
-	 * It should return null if no clients matching search parameters are found.
-	 * @param searchCriteria
-	 * @param searchType
-	 * @return string array of client information from the database
-	 */
-//	public ArrayList<String> searchClient(String searchCriteria, String searchType)
-//	{
-//		String sql = "SELECT * FROM " + tableName + " WHERE " + searchType + "=?";
-//		ArrayList<String> results = new ArrayList<String>();
-//		ResultSet client;
-//		try {
-//			statement = jdbc_connection.prepareStatement(sql);
-//			if (searchCriteria.equals("ID"))
-//				statement.setInt(1, Integer.parseInt(searchCriteria));
-//			else
-//				statement.setString(1, searchCriteria);
-//			client = statement.executeQuery();
-//			while(client.next())
-//			{
-//				String find = client.getString(1) + ";" + client.getString(2) + ";"
-//						+ client.getString(3) + ";" + client.getString(4) + ";"
-//						+ client.getString(5) + ";" + client.getString(6) + ";"
-//						+ client.getString(7);
-//				results.add(find);
-//			}
-//			return results;
-//		} catch (SQLException e) { e.printStackTrace(); }
-//		
-//		return null;
-//	}
-
-//	/**Update client information for the client that matches the ID argument given
-//	 * @param id
-//	 * @param firstName
-//	 * @param lastName
-//	 * @param address
-//	 * @param postCode
-//	 * @param phone
-//	 * @param type
-//	 */
-//	public void updateClient(String id, String firstName, String lastName, String address, String postCode, String phone,
-//			String type) {
-//		String sql = "UPDATE " + tableName +
-//				" SET FIRSTNAME=?, LASTNAME=?, ADDRESS=?, "
-//				+ "POSTCODE=?, PHONENUMBER=?, CLIENTTYPE=? "
-//				+ "WHERE ID = ?;";
-//		try{
-//			statement = jdbc_connection.prepareStatement(sql);
-//			statement.setString(1, firstName);
-//			statement.setString(2, lastName);
-//			statement.setString(3, address);
-//			statement.setString(4, postCode);
-//			statement.setString(5, phone);
-//			statement.setString(6, type);
-//			statement.setString(7, id);
-//			statement.executeUpdate();
-//		}
-//		catch(SQLException e)
-//		{
-//			e.printStackTrace();
-//		}
-//	}
 	
 
 

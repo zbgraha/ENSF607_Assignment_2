@@ -15,7 +15,9 @@ import customerAndActions.CustomerAndAction;
 
 /**A controller that ties the UI for a client management system to its back
  * end functionality.
- * @author Zachary Graham
+ * @author Riley Berry and Zachary Graham
+ * @version 1.0
+ * @since 2020-02-13
  *
  */
 public class ClientController {

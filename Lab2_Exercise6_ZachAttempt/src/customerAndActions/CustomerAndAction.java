@@ -1,7 +1,13 @@
 package customerAndActions;
 import java.io.Serializable;
 import java.util.ArrayList;
-
+/**
+ * An object to manage each connection from a client with a new thread
+ * @author Riley Berry and Zachary Graham
+ * @version 1.0
+ * @since 2020-02-13
+ *
+ */
 public class CustomerAndAction implements Serializable{
 
 	private ArrayList<Customer> customerList;
