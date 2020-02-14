@@ -21,6 +21,7 @@ import customerAndActions.CustomerAndAction;
 public class ClientController {
 
 	private ClientManagementScreen UI;
+	private ConnectionWaitingScreen wait;
 	private Client client;
 	
 	/**Accepts a Client management object and its related database object and instantiates
@@ -28,8 +29,9 @@ public class ClientController {
 	 * @param database
 	 * @param UI
 	 */
-	public ClientController(ClientManagementScreen UI) {
+	public ClientController(ClientManagementScreen UI, ConnectionWaitingScreen wait) {
 		this.UI = UI;
+		this.wait = wait;
 		
 		UI.addSaveListener(new SaveListener());
 		UI.addAddListener(new AddListener());
@@ -50,6 +52,12 @@ public class ClientController {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
+		    }
+		});
+		wait.addWindowListener(new java.awt.event.WindowAdapter() {
+		    @Override
+		    public void windowClosing(java.awt.event.WindowEvent windowEvent) {
+		    	wait.setVisible(false);
 		    }
 		});
 	}
@@ -288,6 +296,15 @@ public class ClientController {
 
 	public void setClient(Client client) {
 		this.client = client;
+	}
+
+	public void waitingForConnection() {
+		UI.setVisible(false);
+	}
+
+	public void connected() {
+		wait.setVisible(false);
+		UI.setVisible(true);
 	}
 }
  

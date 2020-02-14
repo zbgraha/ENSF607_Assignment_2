@@ -35,6 +35,11 @@ public class Client {
 			
 			try {
 				newGame = (GameInformation) socketIn.readObject();
+				if (newGame.getDisplayInstruction()==10) {
+					controller.playerDisconnect();
+					break;
+				}
+					
 				controller.updateDisplay(newGame);
 				
 				processInstruction(newGame);

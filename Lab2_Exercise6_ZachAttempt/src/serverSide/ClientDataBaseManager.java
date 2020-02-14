@@ -207,7 +207,11 @@ public class ClientDataBaseManager {
 		try {
 			statement = jdbc_connection.prepareStatement(sql);
 			if (instruction.getSearchType().equals("ID"))
-				statement.setInt(1, Integer.parseInt(instruction.getSearchCriteria()));
+				try {
+					statement.setInt(1, Integer.parseInt(instruction.getSearchCriteria()));
+				} catch (Exception e) {
+					return results;
+				}
 			else
 				statement.setString(1, instruction.getSearchCriteria());
 			client = statement.executeQuery();

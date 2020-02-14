@@ -17,6 +17,7 @@ public class Client {
 	
 	public Client (String serverName, int portNumber, ClientController controller) {
 		this.controller = controller;
+		this.controller.waitingForConnection();
 		try {
 			aSocket = new Socket (serverName, portNumber);
 			socketOut = new ObjectOutputStream(aSocket.getOutputStream());
@@ -29,6 +30,18 @@ public class Client {
 	}
 
 	public void communicate () {
+		while (true) {
+			try {
+				CustomerAndAction com = (CustomerAndAction) socketIn.readObject();
+				if (com.getAction()==99) {
+					controller.connected();
+					break;
+				}
+			} catch (ClassNotFoundException | IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 		
 		while (true) {
 			

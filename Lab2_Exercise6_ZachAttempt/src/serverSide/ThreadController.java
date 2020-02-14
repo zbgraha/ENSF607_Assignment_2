@@ -20,6 +20,14 @@ public class ThreadController implements Runnable{
 
 	@Override
 	public void run() {
+		while (true) {
+			try {
+				socketOut.writeObject(new CustomerAndAction(99));
+				break;
+			} catch (Exception e) {
+				
+			}
+		}
 		System.out.println("Accepting User Input!\n");
 		while (true) {
 			try {
