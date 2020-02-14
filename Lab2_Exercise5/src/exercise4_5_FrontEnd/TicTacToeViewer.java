@@ -238,7 +238,7 @@ public class TicTacToeViewer implements Constants {
 	 */
 	private void initialize() {
 		frmRileysTictactoeGame = new JFrame();
-		frmRileysTictactoeGame.setTitle("Riley's Tic-Tac-Toe Game");
+		frmRileysTictactoeGame.setTitle("Riley and Zachary's Tic-Tac-Toe Game");
 		frmRileysTictactoeGame.setBounds(100, 100, 539, 414);
 		frmRileysTictactoeGame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmRileysTictactoeGame.getContentPane().setLayout(null);

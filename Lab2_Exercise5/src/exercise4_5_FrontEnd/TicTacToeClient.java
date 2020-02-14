@@ -68,23 +68,7 @@ public class TicTacToeClient implements Runnable{
 		return isConnected;
 	}
 
-//	public void listen() {
-//		if (isConnected) {
-//			
-//			try {
-//				myCommand = (GameCommand) objectIn.readObject();
-//				
-//			} catch (ClassNotFoundException | IOException e) {
-//				e.printStackTrace();
-//				myCommand.setCommand(99);	
-//			}		
-//		}
-//		else {
-//			myCommand.setCommand(98);
-//		}
-////		return myCommand;
-//	
-//	}
+
 
 	/**Reads the object inputstream and updates the value of the myCommand
 	 * object in the server with the object. Also executes the function in the controller

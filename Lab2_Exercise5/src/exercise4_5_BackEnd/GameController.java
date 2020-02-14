@@ -79,11 +79,11 @@ public class GameController implements Runnable, Constants{
 //			while(startupCommandX.getxPlayer() == null) {
 				startupCommandX = (GameCommand) socketInPlayerA.readObject();
 //			}
-				System.out.println("TestPointE");
+
 //			while(startupCommandO.getoPlayer() == null) {
 				startupCommandO = (GameCommand) socketInPlayerB.readObject();
 //			}
-				System.out.println("TestPointF");
+
 			// sets the current player to X, gets opponent info
 			currentCommand = startupCommandX;
 			currentCommand.setoPlayer(startupCommandO.getoPlayer());
@@ -261,7 +261,7 @@ public class GameController implements Runnable, Constants{
 
 		
 		// For testing
-		backEndBoard.display();
+//		backEndBoard.display();
 		
 	}
 	

@@ -251,14 +251,14 @@ public class TicTacToeController implements Constants{
 	 * 
 	 */
 	private void setOpponentName() {
-		myView.addMessage("Test message 2");
+
 		if (myMark == LETTER_X) 
 			myView.setOpponentName(myCommand.getoPlayer());
 		else
 			myView.setOpponentName(myCommand.getxPlayer());
 		
 		myCommand.setCommand(1);
-		myView.addMessage("Test message 3");
+
 	}
 	
 	/**Displays to the user that the opponent has requested the the game be restart.

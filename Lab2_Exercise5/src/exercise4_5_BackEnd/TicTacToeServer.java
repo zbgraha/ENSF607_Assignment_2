@@ -40,7 +40,7 @@ public class TicTacToeServer {
 	 * 
 	 */
 	public void runServer() {
-		
+		System.out.println("Server started");
 		try {
 			Socket playerA = serverSocket.accept();
 			ObjectOutputStream aPlayerOutput = new ObjectOutputStream(playerA.getOutputStream());
