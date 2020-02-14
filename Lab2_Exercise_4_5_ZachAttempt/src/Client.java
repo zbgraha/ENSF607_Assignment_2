@@ -41,7 +41,10 @@ public class Client {
 				if (gameOver())
 					break;
 			}catch (IOException e) {
-				e.getStackTrace();
+//				e.getStackTrace();
+				
+				System.err.println("Connection lost");
+				break;
 			} catch (ClassNotFoundException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -52,6 +55,7 @@ public class Client {
 			socketIn.close();
 			socketOut.close();
 		}catch (IOException e) {
+			
 			e.getStackTrace();
 		}
 		
